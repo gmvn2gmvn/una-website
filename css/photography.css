@@ -1,0 +1,159 @@
+/* ============================================================
+   Una Skujina — Photography section
+   Level 2: all-projects overview (photography.html)
+   Level 3: individual project page (rave-the-planet.html, …)
+   Loaded after the Webflow CSS + nav.css. Single breakpoint at
+   767/768px, matching nav.css. Class-based, no inline styles.
+   ============================================================ */
+
+:root{
+  --usk-photo-max: 1728px;   /* logical width of a 16" MacBook — grid never exceeds this */
+}
+
+/* ---------------- Level 2 — overview ---------------- */
+
+/* nav scrim: keeps the white --over nav legible over the first tiles.
+   Follows the same measure as the grid so it sits over imagery, not the margins. */
+.usk-photo-scrim{
+  position:absolute; top:0; left:0; right:0;
+  max-width:var(--usk-photo-max); margin:0 auto;
+  height:140px; z-index:15; pointer-events:none;
+  background-image:linear-gradient(to bottom,#08080699,#0808061f 60%,#08080600);
+}
+
+.usk-photo-grid{
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:0;
+  width:100%; max-width:var(--usk-photo-max); margin:0 auto;
+}
+
+.usk-photo-tile{
+  position:relative; display:block; overflow:hidden;
+  aspect-ratio:1 / 1; background:#f1efe8; color:inherit; text-decoration:none;
+}
+.usk-photo-tile.is-feature{ grid-column:span 2; aspect-ratio:2 / 1; }
+
+.usk-photo-tile img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; display:block; filter:brightness(.82);
+}
+
+.usk-photo-tint{
+  position:absolute; inset:0;
+  background-image:linear-gradient(to top,#080806a3,#08080647 55%,#08080659);
+}
+.usk-photo-tile.is-feature .usk-photo-tint{
+  background-image:linear-gradient(to top,#080806a8,#08080685 55%,#08080699);
+}
+
+.usk-photo-cap{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; text-align:center; padding:16px;
+}
+.usk-photo-cap h2{
+  margin:0; font-weight:400; color:#fff;
+  font-size:20px; line-height:1.1; letter-spacing:-.01em;
+}
+.usk-photo-tile.is-feature .usk-photo-cap h2{ font-size:32px; }
+
+.usk-photo-year{
+  color:#ffffffd9; font-size:10px; letter-spacing:.26em;
+  font-variant-numeric:tabular-nums;
+}
+
+/* per-tile counter — desktop only (dropped on mobile per spec) */
+.usk-photo-counter{ display:none; }
+
+@media (min-width:768px){
+  .usk-photo-grid{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+  .usk-photo-scrim{ height:180px; }
+  .usk-photo-cap{ gap:10px; padding:24px; }
+  .usk-photo-cap h2{ font-size:30px; line-height:1.05; letter-spacing:-.015em; }
+  .usk-photo-tile.is-feature .usk-photo-cap h2{ font-size:48px; }
+  .usk-photo-year{ font-size:11px; letter-spacing:.3em; }
+  .usk-photo-counter{
+    display:block; position:absolute; bottom:16px; right:16px;
+    color:#ffffffd9; font-size:10px; letter-spacing:.2em;
+    font-variant-numeric:tabular-nums;
+  }
+}
+
+/* ---------------- Level 3 — project page ---------------- */
+
+/* the "Photography" link inside the eyebrow — muted, not the site's link red */
+.usk-page-eyebrow a,
+.usk-page-eyebrow a:link,
+.usk-page-eyebrow a:visited{ color:inherit; text-decoration:none; }
+.usk-page-eyebrow a:hover,
+.usk-page-eyebrow a:focus{ color:#0e0e0c; }
+
+/* project switcher reuses .usk-year-link — keep hover ink, not the site link red */
+.usk-year-switcher .usk-year-link:hover,
+.usk-year-switcher .usk-year-link:focus{ color:#0e0e0c; }
+
+/* right-hand meta in the switcher row ("2026 · 12 frames") */
+.usk-photo-meta{
+  color:#888780; letter-spacing:.2em; text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px;
+}
+
+/* intro — two-column, label left, copy right */
+.usk-photo-intro{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
+  gap:48px; padding:48px 0 56px;
+}
+.usk-photo-intro-label{
+  color:#5f5e5a; letter-spacing:.2em; text-transform:uppercase; font-size:11px;
+}
+.usk-photo-intro-body{
+  margin:0; max-width:62ch; color:#2c2c2a;
+  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:16px; font-style:italic; font-weight:300; line-height:1.6;
+  text-wrap:pretty;
+}
+@media (max-width:767px){
+  .usk-photo-intro{ grid-template-columns:1fr; gap:16px; padding:32px 0 40px; }
+}
+
+/* mosaic — 6-col grid, span encodes orientation. Any row must sum to 6. */
+.usk-photo-mosaic-wrap{
+  max-width:1280px; margin:0 auto; padding:0 24px 96px;
+}
+.usk-photo-mosaic{
+  display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:2px;
+}
+.usk-photo-frame{
+  position:relative; overflow:hidden;
+  background:#f1efe8;
+  grid-column:span 3; aspect-ratio:3 / 2;      /* landscape default */
+}
+.usk-photo-frame.is-portrait{ grid-column:span 2; aspect-ratio:2 / 3; }
+.usk-photo-frame.is-full{ grid-column:span 6; aspect-ratio:3 / 2; }
+.usk-photo-frame img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; display:block;
+}
+.usk-photo-frame-label{
+  position:absolute; bottom:10px; left:10px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8b887e;
+}
+@media (max-width:767px){
+  /* two-up on mobile: portrait keeps 1-col, landscape/full go full width */
+  .usk-photo-mosaic{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .usk-photo-frame{ grid-column:span 2; }
+  .usk-photo-frame.is-portrait{ grid-column:span 1; }
+}
+
+/* prev / next above the site footer */
+.usk-photo-pagenav{
+  display:flex; justify-content:space-between; align-items:baseline;
+  border-top:.5px solid #0e0e0c2e; margin-top:48px; padding-top:20px;
+}
+.usk-photo-pagenav a{
+  letter-spacing:.2em; text-transform:uppercase; font-size:11px;
+  text-decoration:none; color:#5f5e5a; transition:color .25s;
+}
+.usk-photo-pagenav a.is-next{ color:#0e0e0c; }
+.usk-photo-pagenav a:hover{ color:#0e0e0c; }

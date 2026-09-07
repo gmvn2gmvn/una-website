@@ -74,10 +74,10 @@
     groups.forEach(function (g) { g.classList.remove("is-expanded"); setToggle(g, false); });
   }
   function openMenu() {
+    collapseAll();                             /* always open fully collapsed */
     nav.classList.add("is-open");
     if (burger) burger.setAttribute("aria-expanded", "true");
     document.documentElement.classList.add("usk-nav-lock");
-    if (groups[0]) expand(groups[0]);          /* Paintings pre-expanded */
   }
   function closeMenu() {
     nav.classList.remove("is-open");
@@ -120,6 +120,8 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.keyCode === 27) { closeDesktop(); closeMenu(); }
   });
+  /* returning via the back button (iOS bfcache) must not restore an open/expanded menu */
+  window.addEventListener("pageshow", function () { closeDesktop(); closeMenu(); });
   function onViewportChange() { closeDesktop(); closeMenu(); }
   if (mq.addEventListener) mq.addEventListener("change", onViewportChange);
   else if (mq.addListener) mq.addListener(onViewportChange);

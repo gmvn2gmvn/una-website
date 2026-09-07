@@ -17,8 +17,8 @@
 /* ---------------- bar ---------------- */
 .usk-nav{
   position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:40px max(20px, 50vw - 800px);
+  display:flex; align-items:center; justify-content:center; gap:32px;
+  padding:40px 20px;
   font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color:transparent; box-shadow:none;
   transition:background-color .35s ease, box-shadow .35s ease;
@@ -33,6 +33,7 @@
 .usk-nav-wordmark:hover,
 .usk-nav-wordmark:focus{
   position:relative; z-index:120;
+  display:block; padding-bottom:6px;   /* share the links' baseline */
   color:var(--usk-ink); letter-spacing:.18em; text-transform:uppercase;
   font-size:12px; font-weight:400; text-decoration:none;
 }
@@ -42,7 +43,7 @@
 
 .usk-nav-links{
   position:relative; z-index:2;
-  display:flex; gap:16px; margin:0; padding:0; list-style:none;
+  display:flex; justify-content:center; gap:32px; margin:0; padding:0; list-style:none;
 }
 .usk-nav-item{ position:relative; }
 .usk-nav-row{ position:relative; display:inline-flex; align-items:center; }
@@ -50,7 +51,7 @@
 .usk-nav-link,
 .usk-nav-link:hover,
 .usk-nav-link:focus{
-  display:block; padding:6px 0; position:relative;
+  display:block; padding-bottom:6px; position:relative;   /* 6px reserves the hairline row */
   color:var(--usk-ink); letter-spacing:.12em; text-transform:uppercase;
   font-size:11px; text-decoration:none; transition:color .25s;
 }
@@ -120,7 +121,8 @@
 
 /* ============================ mobile ============================ */
 @media (max-width:767px){
-  .usk-nav{ padding:18px 20px; }
+  .usk-nav{ justify-content:space-between; gap:0; padding:18px 20px; }
+  .usk-nav-wordmark{ padding-bottom:0; }
   .usk-nav-burger{ display:flex; }
   .usk-nav-sheet{ display:none; }
 

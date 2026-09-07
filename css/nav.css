@@ -1,0 +1,182 @@
+/* ============================================================
+   Una Skujina — primary navigation
+   Desktop: hover Paintings / Photography to reveal a sub-menu.
+   Mobile:  tap the burger for a full-screen menu; tap a caret
+            to expand a section in place.
+   Implements "Nav Subnav.dc.html". Loaded after the Webflow CSS,
+   so plain-selector rules here override the exported nav styles.
+   ============================================================ */
+
+:root{
+  --usk-ink:#0e0e0c;
+  --usk-mid:#5f5e5a;
+  --usk-muted:#888780;
+  --usk-sheet-h:0px;
+}
+
+/* ---------------- bar ---------------- */
+.usk-nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:40px max(20px, 50vw - 800px);
+  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color:transparent; box-shadow:none;
+  transition:background-color .35s ease, box-shadow .35s ease;
+}
+.usk-nav.is-scrolled,
+.usk-nav.is-active{
+  background-color:#fff;
+  box-shadow:0 1px 0 rgba(14,14,12,.06);
+}
+
+.usk-nav-wordmark,
+.usk-nav-wordmark:hover,
+.usk-nav-wordmark:focus{
+  position:relative; z-index:120;
+  color:var(--usk-ink); letter-spacing:.18em; text-transform:uppercase;
+  font-size:12px; font-weight:400; text-decoration:none;
+}
+
+/* ---------------- desktop menu ---------------- */
+.usk-nav-menu{ display:flex; align-items:center; }
+
+.usk-nav-links{
+  position:relative; z-index:2;
+  display:flex; gap:16px; margin:0; padding:0; list-style:none;
+}
+.usk-nav-item{ position:relative; }
+.usk-nav-row{ position:relative; display:inline-flex; align-items:center; }
+
+.usk-nav-link,
+.usk-nav-link:hover,
+.usk-nav-link:focus{
+  display:block; padding:6px 0; position:relative;
+  color:var(--usk-ink); letter-spacing:.12em; text-transform:uppercase;
+  font-size:11px; text-decoration:none; transition:color .25s;
+}
+.usk-nav-link::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:currentColor; transform:scaleX(0); transform-origin:left center;
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.usk-nav-item.is-open > .usk-nav-row > .usk-nav-link::after,
+.usk-nav-item.is-current > .usk-nav-row > .usk-nav-link::after{ transform:scaleX(1); }
+
+.usk-nav-caret{ display:none; }
+
+/* ---------------- desktop sub-menu ---------------- */
+.usk-nav-sub{
+  position:absolute; top:100%; left:0; margin:0; padding:30px 0 0;
+  list-style:none; display:flex; flex-direction:column; gap:16px;
+  white-space:nowrap;
+  opacity:0; transform:translateY(-6px); pointer-events:none;
+  transition:opacity .35s ease, transform .45s cubic-bezier(.22,1,.36,1);
+}
+.usk-nav-item.is-open > .usk-nav-sub{ opacity:1; transform:translateY(0); pointer-events:auto; }
+/* keyboard: focus opens the sub-menu on desktop */
+@media (min-width:768px){
+  .usk-nav-item.has-sub:focus-within > .usk-nav-sub{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .usk-nav-item.has-sub:focus-within > .usk-nav-row > .usk-nav-link::after{ transform:scaleX(1); }
+}
+.usk-nav-sub a,
+.usk-nav-sub a:link,
+.usk-nav-sub a:visited{
+  color:var(--usk-mid); letter-spacing:.12em; text-transform:uppercase;
+  font-size:11px; text-decoration:none; transition:color .2s;
+}
+.usk-nav-sub a:hover,
+.usk-nav-sub a:focus,
+.usk-nav-sub a[aria-current="page"]{ color:var(--usk-ink); }
+
+/* full-width white sheet that drops behind the open sub-menu */
+.usk-nav-sheet{
+  position:absolute; top:100%; left:0; right:0; z-index:1;
+  height:var(--usk-sheet-h,0px); overflow:hidden; pointer-events:none;
+  background:#fff; border-bottom:0 solid rgba(14,14,12,.08);
+  transition:height .42s cubic-bezier(.22,1,.36,1);
+}
+/* hairline only while open — a permanent one shows as a line over the artwork */
+.usk-nav.is-active .usk-nav-sheet{ border-bottom-width:1px; }
+
+/* ---------------- burger (hidden on desktop) ---------------- */
+.usk-nav-burger{
+  display:none; z-index:120;
+  flex-direction:column; justify-content:center; align-items:center; gap:6px;
+  width:44px; height:44px; padding:0;
+  background:none; border:0; cursor:pointer; color:var(--usk-ink);
+}
+.usk-nav-burger-line{
+  display:block; width:24px; height:1.5px; background-color:currentColor;
+  transition:transform .3s, opacity .3s;
+}
+.usk-nav.is-open .usk-nav-burger-line:nth-child(1){ transform:translateY(7.5px) rotate(45deg); }
+.usk-nav.is-open .usk-nav-burger-line:nth-child(2){ opacity:0; }
+.usk-nav.is-open .usk-nav-burger-line:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
+
+/* ---------------- transparent-over-media variant (homepage hero) ---------------- */
+.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-wordmark,
+.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-link,
+.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-burger{ color:#fff; }
+
+/* ============================ mobile ============================ */
+@media (max-width:767px){
+  .usk-nav{ padding:18px 20px; }
+  .usk-nav-burger{ display:flex; }
+  .usk-nav-sheet{ display:none; }
+
+  .usk-nav-menu{
+    position:fixed; inset:0; z-index:100;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background:#fff;
+    transform:translateY(-100%);
+    transition:transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .usk-nav.is-open .usk-nav-menu{ transform:translateY(0); }
+
+  .usk-nav-links{
+    flex-direction:column; align-items:center; gap:32px;
+    width:100%; padding:0 24px; box-sizing:border-box;
+  }
+  .usk-nav-item{ width:100%; display:flex; flex-direction:column; align-items:center; }
+
+  .usk-nav-link{
+    display:flex; align-items:center; min-height:44px; padding:0;
+    font-size:26px; font-weight:300; letter-spacing:.04em;
+  }
+  .usk-nav-link::after{ display:none; }
+  .usk-nav-item.is-current > .usk-nav-row > .usk-nav-link{
+    text-decoration:underline; text-underline-offset:8px; text-decoration-thickness:1px;
+  }
+
+  .usk-nav-caret{
+    position:absolute; left:100%; top:50%; transform:translateY(-50%);
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; padding:0;
+    background:none; border:0; cursor:pointer;
+  }
+  .usk-nav-caret::before{
+    content:""; display:block; width:9px; height:9px;
+    border-right:1.5px solid var(--usk-ink); border-bottom:1.5px solid var(--usk-ink);
+    transform:rotate(45deg); margin-bottom:4px; opacity:.55;
+    transition:transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .usk-nav-item.is-expanded > .usk-nav-row > .usk-nav-caret::before{ transform:rotate(225deg); }
+
+  .usk-nav-sub{
+    position:static; margin:0; padding:0; white-space:normal;
+    flex-direction:column; align-items:center; gap:18px;
+    max-height:0; overflow:hidden;
+    opacity:0; transform:none; pointer-events:auto;
+    transition:max-height .45s cubic-bezier(.22,1,.36,1), opacity .3s;
+  }
+  .usk-nav-item.is-expanded > .usk-nav-sub{ max-height:340px; opacity:1; padding:24px 0 6px; }
+  .usk-nav-sub a{ display:block; padding:6px 0; font-size:14px; }
+
+  .usk-nav--over.is-open .usk-nav-burger{ color:var(--usk-ink); }
+}
+
+html.usk-nav-lock, html.usk-nav-lock body{ overflow:hidden; }
+
+@media (prefers-reduced-motion:reduce){
+  .usk-nav, .usk-nav *{ transition-duration:.01ms !important; }
+}

@@ -9,6 +9,8 @@
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/una-skujina-685f66bd29deeac77e4e363d94f.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet" type="text/css">
+  <link href="css/nav.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -19,27 +21,53 @@
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F69e536a3515391cb8bac2029%2Fprojectspagestyles-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F69e538f1b999560337a66d3a%2Fprojectspagestylesv2-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F69e77c18d79ab952a54a403f%2Fprojects_row_hover_css-1.0.0.js" type="text/javascript"></script>
-  <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F69ebb248ce45a44d8132a329%2Fprojects_row_hover_css-1.1.0.js" type="text/javascript"></script>
-  <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F6a1c49271924417e2f4ed2ba%2Fnavscrollbgallpages-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F6a1c55ca167fba07211bf007%2Faboutfontcss-1.0.0.js" type="text/javascript"></script>
-  <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F6a1dc111aefde495565e7390%2Fnavstatecontrollerv7-1.0.0.js" type="text/javascript"></script>
 </head>
 <body>
-  <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation-bar w-nav">
-    <div class="w-container">
-      <a href="index.html" class="brand-link w-nav-brand">
-        <h1 class="brand-text">UNA SKUJINA</h1>
-      </a>
-      <nav role="navigation" class="navigation-menu w-nav-menu">
-        <a href="index.html" class="navigation-link w-nav-link">PAINTINGS</a>
-        <a href="index.html" class="navigation-link w-nav-link">PRINTS</a>
-        <a href="about.html" class="navigation-link w-nav-link">About</a>
-      </nav>
-      <div class="hamburger-button w-nav-button">
-        <div class="w-icon-nav-menu"></div>
-      </div>
+  <nav class="usk-nav">
+    <a href="index.html" class="usk-nav-wordmark">Una Skujina</a>
+    <button type="button" class="usk-nav-burger" aria-label="Menu" aria-expanded="false">
+      <span class="usk-nav-burger-line"></span>
+      <span class="usk-nav-burger-line"></span>
+      <span class="usk-nav-burger-line"></span>
+    </button>
+    <div class="usk-nav-menu">
+      <ul role="list" class="usk-nav-links">
+        <li class="usk-nav-item has-sub is-current">
+          <span class="usk-nav-row">
+            <a href="paintings.html" class="usk-nav-link" aria-current="page">Paintings</a>
+            <button type="button" class="usk-nav-caret" aria-label="Show years" aria-expanded="false" aria-controls="usk-sub-paintings"></button>
+          </span>
+          <ul role="list" class="usk-nav-sub" id="usk-sub-paintings">
+            <li><a href="paintings-2026.html">2026</a></li>
+            <li><a href="paintings-2025.html">2025</a></li>
+            <li><a href="paintings-2024.html">2024</a></li>
+            <li><a href="paintings-2023.html">2023</a></li>
+            <li><a href="paintings-2022.html">2022</a></li>
+          </ul>
+        </li>
+        <li class="usk-nav-item has-sub">
+          <span class="usk-nav-row">
+            <a href="photography.html" class="usk-nav-link">Photography</a>
+            <button type="button" class="usk-nav-caret" aria-label="Show projects" aria-expanded="false" aria-controls="usk-sub-photography"></button>
+          </span>
+          <ul role="list" class="usk-nav-sub" id="usk-sub-photography">
+            <li><a href="rave-the-planet.html">Rave The Planet</a></li>
+            <li><a href="house-of-pride.html">House of Pride</a></li>
+            <li><a href="csd-berlin-pride.html">CSD Berlin Pride</a></li>
+            <li><a href="blue-cake-liquid.html">Blue Cake Liquid</a></li>
+            <li><a href="gardening-season.html">Gardening Season</a></li>
+          </ul>
+        </li>
+        <li class="usk-nav-item">
+          <span class="usk-nav-row">
+            <a href="about.html" class="usk-nav-link">About</a>
+          </span>
+        </li>
+      </ul>
     </div>
-  </div>
+    <div class="usk-nav-sheet" aria-hidden="true"></div>
+  </nav>
   <div class="w-layout-blockcontainer headline_prints w-container">
     <div class="text-block-3-copy">PRINTS OF PAINTINS<br></div>
     <div class="text-block-4">SIZE A2, PRICE 150 EUROS</div>
@@ -107,5 +135,6 @@
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F699f499bed33f38527a6172f%2Fphotogallery-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F69f11615b0f001c09886893f%2Fworkscounterautosync-1.0.0.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F6a1c55ca13bf73632f0fb8ad%2Faboutreveal-1.0.0.js" type="text/javascript"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

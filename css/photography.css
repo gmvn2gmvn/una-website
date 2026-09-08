@@ -7,7 +7,11 @@
    ============================================================ */
 
 :root{
-  --usk-photo-max: 1728px;   /* logical width of a 16" MacBook — grid never exceeds this */
+  /* Overview grid measure. Full-bleed on any built-in Mac laptop display,
+     including "More Space" scaling (14"/16" top out at ~2056pt logical).
+     Only genuinely wide external monitors (27" 5K, 34" ultrawide) get the
+     centred white margins the brief asked for. */
+  --usk-photo-max: 2100px;
 }
 
 /* ---------------- Level 2 — overview ---------------- */

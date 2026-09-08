@@ -82,82 +82,112 @@
   }
 }
 
+/* ---------------- shared footer (overview + project pages) ---------------- */
+.usk-photo-foot{ text-align:center; padding:36px 20px; }
+.usk-photo-foot .icons{ display:inline-flex; align-items:center; gap:4px; }
+.usk-photo-foot .text-block{ font-family:Montserrat,sans-serif; font-size:13px; color:#333; }
+
 /* ---------------- Level 3 — project page ---------------- */
+/* mobile-first, single 768px breakpoint (matches nav.css). Capped containers
+   follow --usk-photo-max like the overview so the section behaves the same on
+   every screen. */
 
-/* the "Photography" link inside the eyebrow — muted, not the site's link red */
-.usk-page-eyebrow a,
-.usk-page-eyebrow a:link,
-.usk-page-eyebrow a:visited{ color:inherit; text-decoration:none; }
-.usk-page-eyebrow a:hover,
-.usk-page-eyebrow a:focus{ color:#0e0e0c; }
+.usk-proj-head{ max-width:var(--usk-photo-max); margin:0 auto; padding:96px 20px 0; }
 
-/* project switcher reuses .usk-year-link — keep hover ink, not the site link red */
-.usk-year-switcher .usk-year-link:hover,
-.usk-year-switcher .usk-year-link:focus{ color:#0e0e0c; }
-
-/* right-hand meta in the switcher row ("2026 · 12 frames") */
-.usk-photo-meta{
-  color:#888780; letter-spacing:.2em; text-transform:uppercase;
-  font-variant-numeric:tabular-nums;
-  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px;
+.usk-proj-eyebrow{
+  font-family:Montserrat,sans-serif; font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:#888780; margin-bottom:18px;
 }
+.usk-proj-eyebrow a,
+.usk-proj-eyebrow a:link,
+.usk-proj-eyebrow a:visited{ color:inherit; text-decoration:none; }
+.usk-proj-eyebrow a:hover,
+.usk-proj-eyebrow a:focus{ color:#0e0e0c; }
 
-/* intro — two-column, label left, copy right */
-.usk-photo-intro{
-  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
-  gap:48px; padding:48px 0 56px;
+.usk-proj-title{
+  margin:0 0 0 -3px; color:#0e0e0c; font-weight:400;
+  font-size:40px; line-height:.98; letter-spacing:-.015em;
 }
-.usk-photo-intro-label{
-  color:#5f5e5a; letter-spacing:.2em; text-transform:uppercase; font-size:11px;
+.usk-proj-rule{ border-top:.5px solid #0e0e0c2e; width:100%; margin-top:20px; }
+
+.usk-proj-meta{
+  display:flex; flex-direction:column; gap:18px;
+  margin-top:20px; padding-bottom:28px;
 }
-.usk-photo-intro-body{
-  margin:0; max-width:62ch; color:#2c2c2a;
+.usk-proj-count{
   font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:16px; font-style:italic; font-weight:300; line-height:1.6;
-  text-wrap:pretty;
-}
-@media (max-width:767px){
-  .usk-photo-intro{ grid-template-columns:1fr; gap:16px; padding:32px 0 40px; }
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  font-variant-numeric:tabular-nums; color:#888780;
 }
 
-/* mosaic — 6-col grid, span encodes orientation. Any row must sum to 6. */
-.usk-photo-mosaic-wrap{
-  max-width:1280px; margin:0 auto; padding:0 24px 96px;
+/* project switcher — scrolls horizontally on mobile (bleeds to the edge),
+   wraps on desktop. Same mechanic as the paintings year row. */
+.usk-proj-switch{
+  display:flex; align-items:baseline; gap:24px;
+  overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  margin:0 -20px; padding:0 20px 2px;
 }
-.usk-photo-mosaic{
-  display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:2px;
+.usk-proj-switch::-webkit-scrollbar{ display:none; }
+.usk-proj-switch a,
+.usk-proj-switch a:link,
+.usk-proj-switch a:visited{
+  flex:none; white-space:nowrap; font-size:13px; text-transform:uppercase;
+  color:#5f5e5a; text-decoration:none;
+  border-bottom:1px solid transparent; padding-bottom:4px; transition:color .25s;
 }
-.usk-photo-frame{
-  position:relative; overflow:hidden;
-  background:#f1efe8;
-  grid-column:span 3; aspect-ratio:3 / 2;      /* landscape default */
+.usk-proj-switch a.is-current{ color:#0e0e0c; border-bottom-color:#0e0e0c; }
+.usk-proj-switch a:hover,
+.usk-proj-switch a:focus{ color:#0e0e0c; }
+
+.usk-proj-body{ max-width:var(--usk-photo-max); margin:0 auto; padding:0 20px 64px; }
+
+/* mosaic — column span encodes each frame's own orientation.
+   Mobile grid = 2 cols (rows sum to 2), desktop grid = 6 cols (rows sum to 6). */
+.usk-frame-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:2px; }
+.usk-frame-cell{
+  position:relative; overflow:hidden; background:#f1efe8;
+  aspect-ratio:2 / 3;                         /* portrait — the default */
 }
-.usk-photo-frame.is-portrait{ grid-column:span 2; aspect-ratio:2 / 3; }
-.usk-photo-frame.is-full{ grid-column:span 6; aspect-ratio:3 / 2; }
-.usk-photo-frame img{
+.usk-frame-cell.is-wide{ grid-column:span 2; aspect-ratio:3 / 2; }   /* landscape */
+.usk-frame-cell.is-full{ grid-column:span 2; aspect-ratio:3 / 2; }   /* full-bleed landscape */
+.usk-frame-cell img{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; display:block;
 }
-.usk-photo-frame-label{
-  position:absolute; bottom:10px; left:10px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#8b887e;
-}
-@media (max-width:767px){
-  /* two-up on mobile: portrait keeps 1-col, landscape/full go full width */
-  .usk-photo-mosaic{ grid-template-columns:repeat(2, minmax(0,1fr)); }
-  .usk-photo-frame{ grid-column:span 2; }
-  .usk-photo-frame.is-portrait{ grid-column:span 1; }
+
+.usk-proj-empty{
+  border-top:.5px solid #0e0e0c2e; padding:64px 0;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#888780;
 }
 
-/* prev / next above the site footer */
-.usk-photo-pagenav{
-  display:flex; justify-content:space-between; align-items:baseline;
-  border-top:.5px solid #0e0e0c2e; margin-top:48px; padding-top:20px;
+/* prev / next above the footer */
+.usk-proj-nav{
+  display:flex; flex-direction:column; gap:14px;
+  border-top:.5px solid #0e0e0c2e; margin-top:32px; padding-top:18px;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
 }
-.usk-photo-pagenav a{
-  letter-spacing:.2em; text-transform:uppercase; font-size:11px;
-  text-decoration:none; color:#5f5e5a; transition:color .25s;
+.usk-proj-nav a,
+.usk-proj-nav a:link,
+.usk-proj-nav a:visited{ text-decoration:none; transition:color .25s; }
+.usk-proj-nav .back{ color:#5f5e5a; }
+.usk-proj-nav .next{ color:#0e0e0c; }
+.usk-proj-nav a:hover{ color:#0e0e0c; }
+
+@media (min-width:768px){
+  .usk-proj-head{ padding:120px 24px 0; }
+  .usk-proj-title{ margin-left:-5px; font-size:72px; line-height:.95; letter-spacing:-.018em; }
+  .usk-proj-rule{ margin-top:28px; }
+  .usk-proj-meta{
+    flex-direction:row; align-items:baseline; justify-content:space-between;
+    gap:16px 48px; flex-wrap:wrap; margin-top:24px; padding-bottom:56px;
+  }
+  .usk-proj-switch{ overflow:visible; flex-wrap:wrap; gap:28px; margin:0; padding:0; }
+  .usk-proj-body{ padding:0 24px 96px; }
+
+  .usk-frame-grid{ grid-template-columns:repeat(6, minmax(0,1fr)); }
+  .usk-frame-cell{ grid-column:span 2; }          /* portraits — three per row */
+  .usk-frame-cell.is-wide{ grid-column:span 3; }  /* landscapes — two per row */
+  .usk-frame-cell.is-full{ grid-column:span 6; }
+
+  .usk-proj-nav{ flex-direction:row; justify-content:space-between; margin-top:48px; padding-top:20px; }
 }
-.usk-photo-pagenav a.is-next{ color:#0e0e0c; }
-.usk-photo-pagenav a:hover{ color:#0e0e0c; }

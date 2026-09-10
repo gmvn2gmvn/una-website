@@ -115,9 +115,11 @@
 .usk-nav.is-open .usk-nav-burger-line:nth-child(3){ transform:translateY(-7.5px) rotate(-45deg); }
 
 /* ---------------- transparent-over-media variant (homepage hero) ---------------- */
-.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-wordmark,
-.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-link,
-.usk-nav--over:not(.is-scrolled):not(.is-active) .usk-nav-burger{ color:#fff; }
+/* white ink only while the bar sits transparent over artwork — never when the
+   mobile menu is open (.is-open), which is a solid white panel */
+.usk-nav--over:not(.is-scrolled):not(.is-active):not(.is-open) .usk-nav-wordmark,
+.usk-nav--over:not(.is-scrolled):not(.is-active):not(.is-open) .usk-nav-link,
+.usk-nav--over:not(.is-scrolled):not(.is-active):not(.is-open) .usk-nav-burger{ color:#fff; }
 
 /* ============================ mobile ============================ */
 @media (max-width:767px){
@@ -173,8 +175,6 @@
   }
   .usk-nav-item.is-expanded > .usk-nav-sub{ max-height:340px; opacity:1; padding:24px 0 6px; }
   .usk-nav-sub a{ display:block; padding:6px 0; font-size:14px; }
-
-  .usk-nav--over.is-open .usk-nav-burger{ color:var(--usk-ink); }
 }
 
 html.usk-nav-lock, html.usk-nav-lock body{ overflow:hidden; }

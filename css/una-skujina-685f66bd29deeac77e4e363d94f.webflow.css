@@ -4718,6 +4718,79 @@ blockquote {
     grid-template-columns: 1fr;
     row-gap: 24px;
   }
+
+  /* ───────── mobile year pages — designs 2a / 2b ───────── */
+  .usk-page-header {
+    /* NOTE: the mock's 24px assumes an in-flow nav; .usk-nav is position:fixed
+       (~80px tall on mobile), so this is 80px nav clearance + the mock's 24px. */
+    padding: 104px 20px 0;
+  }
+  .usk-page-eyebrow {
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+  .usk-page-title {
+    margin-left: -3px;
+    font-size: 44px;
+  }
+  .usk-rule {
+    display: none;
+  }
+  .usk-year-row {
+    display: block;
+    position: relative;
+    margin-top: 16px;
+    padding-bottom: 0;
+  }
+  .usk-works-counter {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 13px;
+    font-size: 10px;
+  }
+  .usk-year-switcher {
+    flex-wrap: nowrap;
+    grid-column-gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    border-bottom: .5px solid #0e0e0c2e;
+    scrollbar-width: none;
+  }
+  .usk-year-switcher::-webkit-scrollbar {
+    display: none;
+  }
+  .usk-year-link,
+  .usk-year-link.is-current {
+    flex: none;
+    padding-bottom: 6px;
+    font-size: 13px;
+  }
+  .usk-hero-painting {
+    margin-bottom: 0;
+    padding: 24px 20px 0;
+  }
+  .usk-hero-painting-title {
+    margin-bottom: 8px;
+  }
+  .usk-paintings-grid {
+    column-gap: 16px;
+    padding: 32px 20px 48px;
+  }
+  .usk-painting {
+    margin-bottom: 24px;
+  }
+  .usk-painting-img-wrap {
+    margin-bottom: 10px;
+  }
+  .usk-painting-title {
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .usk-painting-size {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 479px) {

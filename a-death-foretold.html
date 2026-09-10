@@ -88,18 +88,117 @@
   .pager .next{ justify-self:end; align-items:flex-end; text-align:right; }
   .pager a.is-hidden{ visibility:hidden; pointer-events:none; }
   /* ---- responsive ---- */
+  /* mobile-only helpers, injected by the page script; hidden above the breakpoint */
+  .b-year{ display:none; }
+  .b-more{ display:none; }
+  .b-acc{ display:none; }
   @media (max-width:900px){
-    .work{ display:block !important; }
-    .work .b-figure{ position:static !important; height:auto !important; padding:104px 24px 40px !important; border-bottom:1px solid var(--border); display:flex; justify-content:center; }
-    .work .b-figure img{ max-height:74vh !important; max-width:100% !important; }
-    .work .b-caption{ padding:48px 24px 22px !important; border:none !important; min-height:0 !important; }
-    .work .b-details{ padding:0 24px 72px !important; border:none !important; }
+    /* painting first: figure -> title -> text -> gallery (order only, no markup reorder) */
+    .work{ display:flex !important; flex-direction:column; align-items:stretch !important; }
+    .work .b-caption{ display:contents !important; }
+    .work.no-details .b-caption{ min-height:0 !important; }
+    .b-figure{ order:1; }
+    .b-head{ order:2; }
+    .description{ order:3; }
+    .b-details{ order:4; }
+    .b-caption::after{ display:none !important; }
+    .eyebrow{ display:none !important; }
     .scrollcue{ display:none; }
-    .pager{ padding:32px 24px; }
-  }
-  @media (max-width:560px){
-    .pager{ grid-template-columns:1fr; gap:22px; text-align:center; }
-    .pager .prev,.pager .index,.pager .next{ justify-self:center; align-items:center; text-align:center; }
+
+    /* .usk-nav is position:fixed and ~80px tall on mobile — clear it here */
+    .pd-section{ padding-top:80px; }
+
+    /* plate: inset in white, capped height, no full-bleed */
+    .work .b-figure{
+      position:static !important; height:auto !important;
+      border-bottom:none !important;
+      padding:6px 20px 18px !important;
+      display:flex; justify-content:center;
+    }
+    .work .b-figure img{
+      max-width:100% !important; max-height:300px !important;
+      width:auto !important; height:auto !important;
+      box-shadow:0 8px 36px rgba(14,14,12,.13) !important;
+    }
+
+    /* title + size pin under the nav; description scrolls */
+    .b-head{
+      position:sticky; top:80px; z-index:11;
+      background:var(--bg); border-bottom:.5px solid rgba(14,14,12,.14);
+      padding:0 20px 12px;
+      display:grid; grid-template-columns:1fr auto; align-items:baseline; column-gap:12px;
+    }
+    .b-head .painting-title{
+      font-size:24px; font-style:italic; line-height:1.1; letter-spacing:-.02em;
+      margin:0 !important;
+    }
+    .b-year{
+      display:block; white-space:nowrap;
+      font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:var(--muted);
+    }
+    .b-head .title-meta{
+      grid-column:1 / -1; margin:8px 0 0 !important;
+      font-size:13px; color:var(--text-3);
+    }
+
+    /* description: 3-line clamp + Read more */
+    .work .b-caption .description{ max-width:none !important; padding:4px 20px 18px !important; }
+    .work .b-caption .description p{
+      font-size:15px !important; font-weight:300; line-height:1.7; color:var(--text-2);
+      margin:0 !important;
+    }
+    .work .b-caption .description.is-clamped p{
+      display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .b-more{
+      display:inline-block; margin-top:10px; min-height:44px;
+      background:none; border:0; padding:0; font:inherit;
+      font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--text);
+      border-bottom:1px solid rgba(14,14,12,.35); cursor:pointer;
+    }
+
+    /* gallery: details + installation as one collapsible section */
+    .work .b-details{
+      padding:0 !important; border:none !important;
+      border-top:.5px solid rgba(14,14,12,.14) !important;
+      display:block !important;
+    }
+    .work .b-details .details-label{ display:none; }
+    .b-acc{
+      display:flex; width:100%; align-items:center; justify-content:space-between; gap:12px;
+      min-height:44px; padding:18px 20px;
+      background:none; border:0; border-bottom:.5px solid rgba(14,14,12,.14);
+      font:inherit; text-align:left; cursor:pointer;
+    }
+    .b-acc .b-acc-label{ font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--text); }
+    .b-acc .b-acc-sign{ font-size:14px; color:var(--muted); }
+    .work .b-details .w-dyn-list{ width:100%; }
+    .work .b-details .w-dyn-items{
+      display:grid !important; grid-template-columns:1fr 1fr; gap:10px;
+      padding:16px 20px 24px;
+    }
+    .work .b-details.is-collapsed .w-dyn-list{ display:none; }
+    .work .b-details .w-dyn-item{ margin:0; overflow:hidden; }
+    .work .b-details .w-dyn-item img{
+      width:100% !important; height:100% !important;
+      aspect-ratio:1; object-fit:cover; display:block; background:var(--surface);
+    }
+    .work .b-details .w-dyn-item.is-wide{ grid-column:span 2; }
+    .work .b-details .w-dyn-item.is-wide img{ height:auto !important; aspect-ratio:auto; object-fit:fill; }
+
+    /* pager */
+    .pager{
+      display:flex !important; grid-template-columns:none !important;
+      align-items:center; justify-content:space-between; gap:12px;
+      padding:20px !important; border-top:.5px solid rgba(14,14,12,.14);
+    }
+    .pager a{ flex-direction:row; }
+    .pager .index{ align-items:flex-start; text-align:left; }
+    .pager .index .pager-eyebrow{ display:none; }
+    .pager .index .pager-title{
+      font-size:10px; letter-spacing:.24em; text-transform:uppercase;
+      font-style:normal; color:var(--muted);
+    }
   }
 </style></head>
 <body>
@@ -270,6 +369,96 @@
     // 4) Empty description -> remove it so there's no gap.
     var d = work.querySelector('.description');
     if (d && !d.textContent.trim()) d.style.display = 'none';
+  })();
+</script>
+  <script>
+  /* Mobile painting page (<=900px): sticky head, clamped description, merged gallery accordion. */
+  (function () {
+    var work = document.querySelector('.work');
+    if (!work) return;
+    var mq = window.matchMedia('(max-width: 900px)');
+    var built = false;
+
+    function build() {
+      if (built) return;
+      built = true;
+      var caption  = work.querySelector('.b-caption');
+      var title    = work.querySelector('.painting-title');
+      var meta     = work.querySelector('.title-meta');
+      var desc     = work.querySelector('.description');
+      var eyebrow  = work.querySelector('.eyebrow');
+      var details  = work.querySelector('.b-details');
+
+      // 1) group title + size into one sticky head, year beside the title
+      if (caption && title && !work.querySelector('.b-head')) {
+        var head = document.createElement('div');
+        head.className = 'b-head';
+        caption.insertBefore(head, title);
+        head.appendChild(title);
+        var year = '';
+        if (eyebrow) {
+          var parts = eyebrow.querySelectorAll('div');
+          if (parts.length) year = parts[parts.length - 1].textContent.trim();
+        }
+        if (year) {
+          var y = document.createElement('span');
+          y.className = 'b-year';
+          y.textContent = year;
+          head.appendChild(y);
+        }
+        if (meta) head.appendChild(meta);
+      }
+
+      // 2) description: collapse to 3 lines + Read more / Less
+      if (desc && desc.textContent.trim() && !desc.querySelector('.b-more')) {
+        desc.classList.add('is-clamped');
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'b-more';
+        more.textContent = 'Read more';
+        more.addEventListener('click', function () {
+          var clamped = desc.classList.toggle('is-clamped');
+          more.textContent = clamped ? 'Read more' : 'Less';
+        });
+        desc.appendChild(more);
+      }
+
+      // 3) merge details + installation into one accordion (open by default)
+      if (details && !details.querySelector('.b-acc')) {
+        var items = details.querySelectorAll('.w-dyn-item');
+        if (items.length) {
+          var acc = document.createElement('button');
+          acc.type = 'button';
+          acc.className = 'b-acc';
+          acc.innerHTML = '<span class="b-acc-label">Details &amp; installation · ' +
+            items.length + '</span><span class="b-acc-sign">–</span>';
+          details.insertBefore(acc, details.firstChild);
+          var sign = acc.querySelector('.b-acc-sign');
+          acc.addEventListener('click', function () {
+            var collapsed = details.classList.toggle('is-collapsed');
+            sign.textContent = collapsed ? '+' : '–';
+          });
+
+          // 4) per-image: span both columns when wide (natural ratio >= 1.15)
+          Array.prototype.forEach.call(items, function (item) {
+            var img = item.querySelector('img');
+            if (!img) return;
+            var mark = function () {
+              if (img.naturalWidth && img.naturalWidth / img.naturalHeight >= 1.15) {
+                item.classList.add('is-wide');
+              }
+            };
+            if (img.complete) mark();
+            else img.addEventListener('load', mark);
+          });
+        }
+      }
+    }
+
+    if (mq.matches) build();
+    var onChange = function (e) { if (e.matches) build(); };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
   })();
 </script>
   <script src="https://cdn.prod.website-files.com/698277f9c8a665793c4b5601%2F689e5ba67671442434f3ca35%2F699e21db1c50388d1389b28f%2Fsiteanimations-2.2.0.js" type="text/javascript"></script>

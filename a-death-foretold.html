@@ -118,7 +118,7 @@
     .work .b-figure img{
       max-width:100% !important; max-height:300px !important;
       width:auto !important; height:auto !important;
-      box-shadow:0 8px 36px rgba(14,14,12,.13) !important;
+      box-shadow:none !important;
     }
 
     /* title + size pin under the nav; description scrolls */
@@ -174,17 +174,15 @@
     .b-acc .b-acc-sign{ font-size:14px; color:var(--muted); }
     .work .b-details .w-dyn-list{ width:100%; }
     .work .b-details .w-dyn-items{
-      display:grid !important; grid-template-columns:1fr 1fr; gap:10px;
+      display:flex !important; flex-direction:column; gap:16px;
       padding:16px 20px 24px;
     }
     .work .b-details.is-collapsed .w-dyn-list{ display:none; }
-    .work .b-details .w-dyn-item{ margin:0; overflow:hidden; }
+    .work .b-details .w-dyn-item{ margin:0; }
     .work .b-details .w-dyn-item img{
-      width:100% !important; height:100% !important;
-      aspect-ratio:1; object-fit:cover; display:block; background:var(--surface);
+      width:100% !important; height:auto !important;
+      display:block; background:var(--surface);
     }
-    .work .b-details .w-dyn-item.is-wide{ grid-column:span 2; }
-    .work .b-details .w-dyn-item.is-wide img{ height:auto !important; aspect-ratio:auto; object-fit:fill; }
 
     /* pager */
     .pager{
@@ -437,19 +435,6 @@
           acc.addEventListener('click', function () {
             var collapsed = details.classList.toggle('is-collapsed');
             sign.textContent = collapsed ? '+' : '–';
-          });
-
-          // 4) per-image: span both columns when wide (natural ratio >= 1.15)
-          Array.prototype.forEach.call(items, function (item) {
-            var img = item.querySelector('img');
-            if (!img) return;
-            var mark = function () {
-              if (img.naturalWidth && img.naturalWidth / img.naturalHeight >= 1.15) {
-                item.classList.add('is-wide');
-              }
-            };
-            if (img.complete) mark();
-            else img.addEventListener('load', mark);
           });
         }
       }

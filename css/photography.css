@@ -61,7 +61,6 @@
   margin:0; font-weight:400; color:#fff;
   font-size:20px; line-height:1.1; letter-spacing:-.01em;
 }
-.usk-photo-tile.is-feature .usk-photo-cap h2{ font-size:32px; }
 
 .usk-photo-year{
   color:#ffffffd9; font-size:10px; letter-spacing:.26em;
@@ -76,7 +75,6 @@
   .usk-photo-scrim{ height:180px; }
   .usk-photo-cap{ gap:10px; padding:24px; }
   .usk-photo-cap h2{ font-size:30px; line-height:1.05; letter-spacing:-.015em; }
-  .usk-photo-tile.is-feature .usk-photo-cap h2{ font-size:48px; }
   .usk-photo-year{ font-size:11px; letter-spacing:.3em; }
   .usk-photo-counter{
     display:block; position:absolute; bottom:16px; right:16px;

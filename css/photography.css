@@ -36,6 +36,9 @@
 }
 .usk-photo-tile.is-feature{ grid-column:span 2; aspect-ratio:2 / 1; }
 
+/* project without a cover yet — dark stone tile so the caption stays legible */
+.usk-photo-tile:not(:has(img)){ background:#3c3b38; }
+
 .usk-photo-tile img{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; display:block; filter:brightness(.82);
@@ -158,6 +161,17 @@
 .usk-proj-empty{
   border-top:.5px solid #0e0e0c2e; padding:64px 0;
   font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#888780;
+}
+
+/* Painted Prints — legacy two-column print layout ported into a project page */
+.usk-proj-body .gs-body-text{
+  max-width:760px; margin:0 0 28px;
+  font-size:15px; font-weight:400; line-height:1.7; text-align:left; color:#2c2c2a;
+}
+.usk-proj-body .pp-wrapper{ max-width:1180px; margin-left:auto; margin-right:auto; }
+@media (max-width:767px){
+  .usk-proj-body .pp-grid{ grid-column-gap:12px; }
+  .usk-proj-body .pp-img{ margin-top:12px; }
 }
 
 /* prev / next above the footer */

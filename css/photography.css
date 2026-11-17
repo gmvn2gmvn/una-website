@@ -124,9 +124,9 @@
 /* project switcher — scrolls horizontally on mobile (bleeds to the edge),
    wraps on desktop. Same mechanic as the paintings year row. */
 .usk-proj-switch{
-  display:flex; align-items:baseline; gap:24px;
-  overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;
-  margin:0 -20px; padding:0 20px 2px;
+  display:flex; align-items:baseline; gap:12px 20px; flex-wrap:wrap;
+  overflow:visible;
+  margin:0; padding:0;
 }
 .usk-proj-switch::-webkit-scrollbar{ display:none; }
 .usk-proj-switch a,
@@ -191,4 +191,14 @@
   .usk-frame-cell.is-full{ grid-column:span 6; }
 
   .usk-proj-nav{ flex-direction:row; justify-content:space-between; margin-top:48px; padding-top:20px; }
+}
+
+/* Overview: never leave an empty cell at the end (added).
+   Phone (2 columns): an even number of tiles leaves a hole, so the last one spans both columns.
+   Desktop (3 columns, feature tile = 2 cells): a tile count of 3n+1 leaves a hole, so the last one spans 2. */
+@media (max-width:767px){
+  .usk-photo-grid > .usk-photo-tile:last-child:nth-child(2n){ grid-column:span 2; aspect-ratio:2 / 1; }
+}
+@media (min-width:768px){
+  .usk-photo-grid > .usk-photo-tile:last-child:nth-child(3n+1){ grid-column:span 2; aspect-ratio:2 / 1; }
 }

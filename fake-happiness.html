@@ -59,11 +59,11 @@
   .work:not([data-orient="pano"]) .b-caption::after{ content:""; position:absolute; top:96px; bottom:0; right:0; width:1px; background:var(--border); }
   .work[data-side="left"]:not([data-orient="pano"]) .b-caption::after{ right:auto; left:0; }
   /* details = stacked single column in the left rail, under the caption */
-  .b-details{ padding:36px 48px 120px; display:flex; flex-direction:column; gap:22px; }
+  .b-details{ padding:36px 48px 120px; display:flex; flex-direction:column; gap:16px; }
   .b-details .details-label{ margin-bottom:6px; }
   .b-details img{ width:100%; height:auto; display:block; background:var(--surface); }
   .b-details .w-dyn-list, .b-details .w-dyn-items{ width:100%; }
-  .b-details .w-dyn-items{ display:flex; flex-direction:column; gap:22px; }
+  .b-details .w-dyn-items{ display:flex; flex-direction:column; gap:16px; }
   /* no gallery → caption centres beside the painting */
   .work.no-details:not([data-orient="pano"]){ grid-template-areas:"caption figure" "caption figure"; }
   .work.no-details[data-side="left"]:not([data-orient="pano"]){ grid-template-areas:"figure caption" "figure caption"; }
@@ -126,7 +126,7 @@
       display:flex; justify-content:center;
     }
     .work .b-figure img{
-      max-width:100% !important; max-height:300px !important;
+      max-width:100% !important; max-height:75vh !important;
       width:auto !important; height:auto !important;
       box-shadow:none !important;
     }

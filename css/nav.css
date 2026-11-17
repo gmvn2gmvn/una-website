@@ -19,7 +19,7 @@
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:center; gap:32px;
   padding:40px 20px;
-  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:Montserrat,sans-serif;
   background-color:transparent; box-shadow:none;
   transition:background-color .35s ease, box-shadow .35s ease;
 }
@@ -182,3 +182,6 @@ html.usk-nav-lock, html.usk-nav-lock body{ overflow:hidden; }
 @media (prefers-reduced-motion:reduce){
   .usk-nav, .usk-nav *{ transition-duration:.01ms !important; }
 }
+
+/* One typeface site-wide (added): pages without their own font no longer fall back to Arial */
+body{ font-family:Montserrat,sans-serif; }

@@ -26,7 +26,7 @@
 }
 
 .usk-photo-grid{
-  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:0;
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:2px;
   width:100%; max-width:var(--usk-photo-max); margin:0 auto;
 }
 
@@ -116,7 +116,7 @@
   margin-top:20px; padding-bottom:28px;
 }
 .usk-proj-count{
-  font-family:"DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:Montserrat,sans-serif;
   font-size:11px; letter-spacing:.2em; text-transform:uppercase;
   font-variant-numeric:tabular-nums; color:#888780;
 }

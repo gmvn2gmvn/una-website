@@ -2191,7 +2191,7 @@ blockquote {
   margin-left: auto;
   margin-right: auto;
   padding: 0 0 48px;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
@@ -2463,7 +2463,7 @@ blockquote {
   color: #0e0e0c;
   letter-spacing: .18em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
@@ -2482,7 +2482,7 @@ blockquote {
   color: #5f5e5a;
   letter-spacing: .12em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
   text-decoration: none;
   transition: color .25s;
@@ -2555,7 +2555,7 @@ blockquote {
   color: #888780;
   letter-spacing: .25em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 10px;
   transition: color .3s;
 }
@@ -2573,7 +2573,7 @@ blockquote {
   letter-spacing: -.02em;
   text-wrap: balance;
   margin: 0;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 56px;
   font-weight: 400;
   line-height: 1;
@@ -2597,7 +2597,7 @@ blockquote {
   color: #888780;
   letter-spacing: .2em;
   font-variant-numeric: tabular-nums;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
   transition: color .3s;
 }
@@ -2616,7 +2616,7 @@ blockquote {
   color: #888780;
   letter-spacing: .15em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
 }
 
@@ -2639,7 +2639,7 @@ blockquote {
   color: #0e0e0c;
   letter-spacing: .18em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
@@ -2658,7 +2658,7 @@ blockquote {
   color: #0e0e0c;
   letter-spacing: .12em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
   text-decoration: none;
   transition: color .25s;
@@ -2732,7 +2732,7 @@ blockquote {
   color: #888780;
   letter-spacing: .25em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 10px;
   transition: color .3s;
 }
@@ -2754,7 +2754,7 @@ blockquote {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 88px;
   font-weight: 400;
   line-height: 1;
@@ -2778,7 +2778,7 @@ blockquote {
   color: #888780;
   letter-spacing: .2em;
   font-variant-numeric: tabular-nums;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
   transition: color .3s;
 }
@@ -2813,7 +2813,7 @@ blockquote {
   color: #888780;
   letter-spacing: .15em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
 }
 
@@ -3383,7 +3383,7 @@ blockquote {
   color: #0e0e0c;
   letter-spacing: -.018em;
   margin: 0 0 0 -8px;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 72px;
   font-weight: 400;
   line-height: .95;
@@ -3414,7 +3414,7 @@ blockquote {
   font-variant-numeric: tabular-nums;
   border-bottom: 1px solid #0000;
   padding-bottom: 4px;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 13px;
   text-decoration: none;
   transition: color .25s;
@@ -3431,7 +3431,7 @@ blockquote {
   letter-spacing: .2em;
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 11px;
 }
 
@@ -3461,7 +3461,7 @@ blockquote {
   text-wrap: pretty;
   max-width: 38ch;
   margin: 0 0 8px;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 15px;
   font-style: italic;
   font-weight: 300;
@@ -3472,7 +3472,7 @@ blockquote {
   color: #2c2c2a;
   font-variant-numeric: tabular-nums;
   margin: 0;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 400;
 }
@@ -3647,7 +3647,7 @@ blockquote {
   text-wrap: pretty;
   max-width: 60ch;
   margin: 0 0 8px;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 15px;
   font-style: italic;
   font-weight: 300;
@@ -3658,7 +3658,7 @@ blockquote {
   color: #2c2c2a;
   font-variant-numeric: tabular-nums;
   margin: 0;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -4196,7 +4196,7 @@ blockquote {
   color: #0e0e0c;
   letter-spacing: .04em;
   text-transform: uppercase;
-  font-family: DM Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 26px;
   font-weight: 300;
   text-decoration: none;
@@ -4906,3 +4906,10 @@ blockquote {
   width: 100%;
   height: auto;
 }
+
+/* ---- One system (added) ----
+   Type: Montserrat everywhere; nothing falls back to Arial.
+   Overview tiles (landing page, Photography overview): 2px hairline gaps.
+   Photo frames: 2px. Paintings: 16px on phones, 48px between works on desktop, 16px between details of one work. */
+.usk-home-paintings-grid, .usk-work-grid { gap: 2px; }
+.usk-home-paintings-title { font-style: italic; font-weight: 500; }

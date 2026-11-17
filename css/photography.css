@@ -202,3 +202,9 @@
 @media (min-width:768px){
   .usk-photo-grid > .usk-photo-tile:last-child:nth-child(3n+1){ grid-column:span 2; aspect-ratio:2 / 1; }
 }
+
+/* Phones (2 columns): frames are laid out in desktop rows of three, which left a hole after
+   each group of three portraits. Let the next portrait move up into it (added). */
+@media (max-width:767px){
+  .usk-frame-grid{ grid-auto-flow:dense; }
+}

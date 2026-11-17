@@ -4900,3 +4900,9 @@ blockquote {
 }
 
 
+
+/* Year pages: painting images always fill their column (added) */
+.usk-painting-img-wrap, .usk-hero-painting-img-wrap img {
+  width: 100%;
+  height: auto;
+}

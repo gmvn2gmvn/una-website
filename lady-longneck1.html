@@ -208,6 +208,17 @@
       font-style:normal; color:var(--muted);
     }
   }
+  /* ---- pager: previous / next (added) ---- */
+  .pager a.prev .pager-eyebrow::before{ content:"\2190\00a0"; }
+  .pager a.next .pager-eyebrow::after{ content:"\00a0\2192"; }
+  @media (max-width:900px){
+    .pager{ display:grid !important; grid-template-columns:1fr 1fr !important; grid-template-areas:"prev next" "index index"; row-gap:22px !important; column-gap:20px !important; align-items:start !important; }
+    .pager a.prev, .pager a.next{ flex-direction:column !important; gap:6px; }
+    .pager .prev{ grid-area:prev; }
+    .pager .next{ grid-area:next; }
+    .pager .index{ grid-area:index; justify-self:center !important; align-items:center !important; padding-top:18px; border-top:.5px solid rgba(14,14,12,.14); width:100%; text-align:center !important; justify-content:center !important; }
+    .pager .prev .pager-title, .pager .next .pager-title{ font-size:14px; }
+  }
 </style></head>
 <body>
   <nav class="usk-nav">
@@ -284,9 +295,17 @@
         </div>
       </div>
       <div class="pager">
+        <a href="/anthraquinone-blue" class="prev w-inline-block">
+          <div class="pager-eyebrow">Previous</div>
+          <div class="pager-title">Anthraquinone Blue</div>
+        </a>
         <a href="/paintings" class="index w-inline-block">
           <div class="pager-eyebrow">Back to</div>
           <div class="pager-title">All paintings</div>
+        </a>
+        <a href="/fuck-this-shit" class="next w-inline-block">
+          <div class="pager-eyebrow">Next</div>
+          <div class="pager-title">Fuck This Shit</div>
         </a>
       </div>
     </div>
